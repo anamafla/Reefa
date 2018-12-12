@@ -4,8 +4,6 @@ import AttendanceList from "./AttendanceList";
 import Roulette from "./Roulette";
 import Search from "./Search";
 import queryString from "query-string";
-import NavBar from "./NavBar";
-
 import Spinner from "./Spinner";
 
 class Raffle extends Component {
@@ -294,8 +292,6 @@ class Raffle extends Component {
   render() {
     return (
       <div>
-        <NavBar />
-
         <div className="rafle">
           <Search
             handleChangeName={this.handleChangeName}
