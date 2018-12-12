@@ -9,9 +9,6 @@ import NavBar from "./NavBar";
 function App() {
   if (process.env.REACT_GA_TRACKING_ID) {
     ReactGA.initialize(process.env.REACT_GA_TRACKING_ID);
-    ReactGA.pageview("/");
-    ReactGA.pageview("/raffle");
-    ReactGA.pageview("/about");
   }
 
   return (

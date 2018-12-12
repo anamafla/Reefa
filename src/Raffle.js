@@ -5,6 +5,7 @@ import Roulette from "./Roulette";
 import Search from "./Search";
 import queryString from "query-string";
 import Spinner from "./Spinner";
+import ReactGA from "react-ga";
 
 class Raffle extends Component {
   state = {
@@ -64,6 +65,10 @@ class Raffle extends Component {
     localStorage.setItem("access_token", access_token);
 
     this.getGroups(access_token);
+
+    if (process.env.REACT_GA_TRACKING_ID) {
+      ReactGA.pageview("/raffle");
+    }
   };
 
   getGroups = access_token => {

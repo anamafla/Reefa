@@ -1,7 +1,12 @@
 import React from "react";
 import Footer from "./Footer";
+import ReactGA from "react-ga";
 
 function About() {
+  if (process.env.REACT_GA_TRACKING_ID) {
+    ReactGA.pageview("/about");
+  }
+
   return (
     <div>
       <section id="about">

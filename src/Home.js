@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "./Footer";
+import ReactGA from "react-ga";
 
 function Home() {
   const CONSUMER_KEY = process.env.REACT_APP_API_KEY;
@@ -7,6 +8,10 @@ function Home() {
   const CONSUMER_REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
 
   const url = `https://secure.meetup.com/oauth2/authorize?client_id=${CONSUMER_KEY}&response_type=token&redirect_uri=${CONSUMER_REDIRECT_URI}`;
+
+  if (process.env.REACT_GA_TRACKING_ID) {
+    ReactGA.pageview("/");
+  }
 
   return (
     <div>
