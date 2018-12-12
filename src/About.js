@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "./Footer";
 
-export default function About() {
+function About() {
   return (
     <div>
       <section id="about">
@@ -26,3 +26,5 @@ export default function About() {
     </div>
   );
 }
+
+export default About;

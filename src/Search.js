@@ -1,7 +1,7 @@
 import React from "react";
 import Spinner from "./Spinner";
 
-export default function Search(props) {
+function Search(props) {
   return props.groups.length === 0 ? (
     <section>
       <Spinner />
@@ -61,3 +61,5 @@ export default function Search(props) {
     </section>
   );
 }
+
+export default Search;

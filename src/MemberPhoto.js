@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function MemberPhoto(props) {
+function MemberPhoto(props) {
   return (
     <img
       id="memberPhoto"
@@ -10,3 +10,5 @@ export default function MemberPhoto(props) {
     />
   );
 }
+
+export default MemberPhoto;

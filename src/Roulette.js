@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from "react";
 
 const MemberPhoto = lazy(() => import("./MemberPhoto"));
 
-export default function Roulette(props) {
+function Roulette(props) {
   const { roulette } = props;
 
   return (
@@ -38,3 +38,5 @@ export default function Roulette(props) {
     </div>
   );
 }
+
+export default Roulette;

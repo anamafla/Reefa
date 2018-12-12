@@ -6,9 +6,13 @@ import About from "./About";
 import ReactGA from "react-ga";
 import NavBar from "./NavBar";
 
-export default function App() {
-  ReactGA.initialize("UA - 130806472 - 1");
-  ReactGA.pageview("/raffle");
+function App() {
+  if (process.env.REACT_GA_TRACKING_ID) {
+    ReactGA.initialize(process.env.REACT_GA_TRACKING_ID);
+    ReactGA.pageview("/");
+    ReactGA.pageview("/raffle");
+    ReactGA.pageview("/about");
+  }
 
   return (
     <div className="App">
@@ -21,3 +25,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;

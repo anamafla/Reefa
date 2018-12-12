@@ -2,7 +2,7 @@ import React from "react";
 import logo from "./images/logo.png";
 import { Link } from "react-router-dom";
 
-export default function NavBar() {
+function NavBar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div className="container">
@@ -23,3 +23,5 @@ export default function NavBar() {
     </nav>
   );
 }
+
+export default NavBar;

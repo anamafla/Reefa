@@ -1,6 +1,6 @@
 import React from "react";
 
-const AttendanceList = props => {
+function AttendanceList(props) {
   return (
     <div className="attendanceList">
       <h4>Attendance List</h4>
@@ -13,6 +13,6 @@ const AttendanceList = props => {
       </div>
     </div>
   );
-};
+}
 
 export default AttendanceList;

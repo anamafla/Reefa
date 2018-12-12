@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "./Footer";
 
-export default function Home() {
+function Home() {
   const CONSUMER_KEY = process.env.REACT_APP_API_KEY;
 
   const CONSUMER_REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
@@ -66,3 +66,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;
