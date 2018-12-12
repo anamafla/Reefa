@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 
 const MemberPhoto = lazy(() => import("./MemberPhoto"));
+
 export default function Roulette(props) {
   const { roulette } = props;
 

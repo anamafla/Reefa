@@ -1,11 +1,9 @@
 import React from "react";
 import Footer from "./Footer";
-import NavBar from "./NavBar";
 
-function About() {
+export default function About() {
   return (
     <div>
-      <NavBar />
       <section id="about">
         <div className="container">
           <div className="row">
@@ -28,5 +26,3 @@ function About() {
     </div>
   );
 }
-
-export default About;
