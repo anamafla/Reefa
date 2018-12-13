@@ -219,8 +219,8 @@ class Raffle extends Component {
     if (!this.state.endGame) {
       /* Calculate the startIndex and endIndex of the attendanceList for the roulette */
       if (
-        this.state.startIndex < attendanceList.length - 1 &&
-        this.state.endIndex < attendanceList.length - 1
+        startIndex < attendanceList.length - 1 &&
+        endIndex < attendanceList.length - 1
       ) {
         const startIndex = this.state.startIndex + 1;
         const endIndex = this.state.endIndex + 1;
@@ -255,7 +255,9 @@ class Raffle extends Component {
       this.animation();
 
       /* Find the winner */
-      if (this.state.runningTime > 9000) {
+      const animationDuration =
+        Math.round((attendanceList.length * 200) / 1000) * 1000;
+      if (this.state.runningTime > animationDuration) {
         if (
           this.state.roulette[Math.floor(sizeRoulette / 2)].member.id ===
           this.state.attendanceList[this.state.indexWinner].member.id
@@ -277,20 +279,50 @@ class Raffle extends Component {
   };
 
   animation = () => {
-    const requestId = window.requestAnimationFrame(this.spin);
-    let animationDuration = 0;
+    const { attendanceList } = this.state;
 
-    if (this.state.attendanceList.length > 100) {
-      animationDuration = 15000;
-    } else {
-      animationDuration = 8000;
-    }
+    const requestId = window.requestAnimationFrame(this.spin);
+    const animationDuration =
+      Math.round((attendanceList.length * 200) / 1000) * 1000;
 
     const runningTime = this.state.runningTime + 500;
     this.setState({ runningTime });
 
     if (this.state.runningTime > animationDuration) {
       window.cancelAnimationFrame(requestId);
+    }
+    if (this.state.runningTime === animationDuration) {
+      this.startSuspense();
+    }
+  };
+
+  startSuspense = () => {
+    const { attendanceList, indexWinner, sizeRoulette } = this.state;
+    let suspense = 10;
+    let indexInitSuspense = null;
+
+    if (attendanceList.length < suspense) {
+      suspense = attendanceList.length - 1;
+    }
+
+    /* Calculate the startIndex to start suspense time */
+    if (indexWinner <= suspense) {
+      indexInitSuspense = attendanceList.length - 1 - (suspense - indexWinner);
+    } else {
+      indexInitSuspense = indexWinner - suspense;
+    }
+
+    const startIndex = indexInitSuspense;
+    this.setState({ startIndex });
+
+    /* Calculate the endIndex to start suspense time */
+
+    if (indexInitSuspense + sizeRoulette < attendanceList.length) {
+      const endIndex = indexInitSuspense + sizeRoulette;
+      this.setState({ endIndex });
+    } else {
+      const endIndex = indexInitSuspense + sizeRoulette - attendanceList.length;
+      this.setState({ endIndex });
     }
   };
 
