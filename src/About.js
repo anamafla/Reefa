@@ -18,7 +18,7 @@ function About() {
                 I’m Ana, I am passionate about the web, its impact and its
                 potential to transform the world, and this is why I made the
                 decision to retrain and change careers to become a Web Developer
-                back in 2017. I am looking for a projects where I can work as a
+                back in 2017. I am looking for projects where I can work as a
                 React Frontend Web Developer to build great user friendly
                 solutions. If you are looking for someone with dedication,
                 professionalism, and problem-solving skills contact me.

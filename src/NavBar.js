@@ -10,15 +10,13 @@ function NavBar() {
           <img alt="logo" className="logo" src={logo} />
         </Link>
 
-        <div className="collapse navbar-collapse" id="navbarResponsive">
-          <ul className="navbar-nav text-uppercase ml-auto">
-            <li className="nav-item">
-              <Link className="nav-link js-scroll-trigger" to="/about">
-                About
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <ul className="navbar-nav text-uppercase ml-auto">
+          <li className="nav-item">
+            <Link className="nav-link js-scroll-trigger" to="/about">
+              About
+            </Link>
+          </li>
+        </ul>
       </div>
     </nav>
   );

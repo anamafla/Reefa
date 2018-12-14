@@ -40,6 +40,7 @@ class Raffle extends Component {
   };
 
   resetGame = () => {
+    this.stopRoulette();
     const attendanceList = [];
     this.setState({ attendanceList });
 
