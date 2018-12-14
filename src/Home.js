@@ -9,7 +9,7 @@ function Home() {
 
   const url = `https://secure.meetup.com/oauth2/authorize?client_id=${CONSUMER_KEY}&response_type=token&redirect_uri=${CONSUMER_REDIRECT_URI}`;
 
-  if (process.env.REACT_GA_TRACKING_ID) {
+  if (process.env.REACT_APP_GA_TRACKING_ID) {
     ReactGA.pageview("/");
   }
 

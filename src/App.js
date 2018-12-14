@@ -7,8 +7,8 @@ import ReactGA from "react-ga";
 import NavBar from "./NavBar";
 
 function App() {
-  if (process.env.REACT_GA_TRACKING_ID) {
-    ReactGA.initialize(process.env.REACT_GA_TRACKING_ID);
+  if (process.env.REACT_APP_GA_TRACKING_ID) {
+    ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID);
   }
 
   return (

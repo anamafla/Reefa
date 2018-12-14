@@ -3,13 +3,13 @@ import Footer from "./Footer";
 import ReactGA from "react-ga";
 
 function About() {
-  if (process.env.REACT_GA_TRACKING_ID) {
+  if (process.env.REACT_APP_GA_TRACKING_ID) {
     ReactGA.pageview("/about");
   }
 
   return (
     <div>
-      <section id="about">
+      <section className="section-about">
         <div className="container">
           <div className="row">
             <div className="col-lg-12 text-center">

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import AttendanceList from "./AttendanceList";
 import Roulette from "./Roulette";
 import Search from "./Search";
 import queryString from "query-string";
@@ -67,7 +66,7 @@ class Raffle extends Component {
 
     this.getGroups(access_token);
 
-    if (process.env.REACT_GA_TRACKING_ID) {
+    if (process.env.REACT_APP_GA_TRACKING_ID) {
       ReactGA.pageview("/raffle");
     }
   };
