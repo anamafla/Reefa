@@ -195,6 +195,7 @@ header.masthead .intro-text .intro-heading {
 @media (max-width: 560px) {
   .wrapper {
     top: 5px;
+    overflow-x: hidden;
   }
 
   .wheel {
