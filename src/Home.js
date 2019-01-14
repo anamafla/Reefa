@@ -13,6 +13,13 @@ function Home() {
     ReactGA.pageview("/");
   }
 
+  const trackingClick = event => {
+    ReactGA.event({
+      category: "User",
+      action: "Authentication MeetUp"
+    });
+  };
+
   return (
     <div>
       <header className="masthead">
@@ -21,9 +28,11 @@ function Home() {
             <div className="intro-heading text-uppercase">
               MEETUP RAFFLES AND GIVEAWAYS
             </div>
+
             <a
               className="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
               href={url}
+              onClick={trackingClick}
             >
               START
             </a>
