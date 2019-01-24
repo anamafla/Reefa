@@ -57,6 +57,9 @@ class Raffle extends Component {
 
     const startIndex = 0;
     this.setState({ startIndex });
+
+    const statusMessage = "";
+    this.setState({ statusMessage });
   };
 
   componentDidMount = () => {
@@ -92,14 +95,28 @@ class Raffle extends Component {
     if (this.state.urlName) {
       const access_token = localStorage.getItem("access_token");
 
-      axios
-        .get(
+      const getPastEvents = () => {
+        return axios.get(
           `https://cors-anywhere.herokuapp.com/https://api.meetup.com/${
             this.state.urlName
           }/events?access_token=${access_token}&sign=true&photo-host=public&page=5&desc=true&status=past`
-        )
+        );
+      };
+
+      const getUpcomingEvent = () => {
+        return axios.get(
+          `https://cors-anywhere.herokuapp.com/https://api.meetup.com/${
+            this.state.urlName
+          }/events?access_token=${access_token}&sign=true&photo-host=public&page=1&desc=false&status=upcoming`
+        );
+      };
+
+      axios
+        .all([getUpcomingEvent(), getPastEvents()])
         .then(response => {
-          this.setState({ events: response.data });
+          const events = [...response[0].data, ...response[1].data];
+
+          this.setState({ events });
 
           loading = false;
           this.setState({ loading });
@@ -127,15 +144,15 @@ class Raffle extends Component {
           this.state.urlName
         }/events/${
           this.state.eventId
-        }/attendance?access_token=${access_token}&sign=true&photo-host=public&page=20`
+        }/rsvps?access_token=${access_token}&sign=true&photo-host=public&page=20`
       )
+
       .then(response => {
         this.setState({
           attendanceList: response.data.filter(
             assistent => assistent.member.id !== 0 && assistent.member.photo
           )
         });
-
         /*Set roulette size  */
 
         if (this.state.attendanceList.length <= 3) {
@@ -162,6 +179,13 @@ class Raffle extends Component {
           const statusMessage = "";
           this.setState({ statusMessage });
         }
+
+        loading = false;
+        this.setState({ loading });
+      })
+      .catch(error => {
+        const statusMessage = "An error has ocurred";
+        this.setState({ statusMessage });
 
         loading = false;
         this.setState({ loading });
