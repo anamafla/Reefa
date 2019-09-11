@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Raffle from "./Raffle";
+// import RaffleState from "./RaffleState";
 import Home from "./Home";
 import About from "./About";
 import ReactGA from "react-ga";
@@ -17,6 +18,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/raffle" component={Raffle} />
+        {/* <Route path="/raffle" component={RaffleState} /> */}
         <Route path="/about" component={About} />
       </Switch>
     </div>

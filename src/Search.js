@@ -1,7 +1,40 @@
 import React from "react";
 import Spinner from "./Spinner";
+import { useSpring, animated } from "react-spring";
 
 function Search(props) {
+  const propsSpringGroups = useSpring({
+    from: {
+      opacity: 0,
+      marginLeft: -400
+    },
+    opacity: 1,
+    marginLeft: 0,
+    marginRight: 0,
+    config: {
+      mass: 2,
+      tension: 170,
+      friction: 30,
+      clamp: true,
+      precision: 0.01,
+      velocity: 10
+    }
+  });
+
+  const propsSpringEvents = useSpring({
+    opacity: props.events.length > 0 ? 1 : 0,
+    marginLeft: 0,
+    marginRight: 0,
+    config: {
+      mass: 2,
+      tension: 170,
+      friction: 30,
+      clamp: true,
+      precision: 0.01,
+      velocity: 10
+    }
+  });
+
   return props.groups.length === 0 ? (
     <section>
       <Spinner />
@@ -10,7 +43,10 @@ function Search(props) {
     <section className="section-search">
       <form>
         <div className="row justify-content-center">
-          <div className="input-group mb-3 col-md-5 col-sm-8">
+          <animated.div
+            style={propsSpringGroups}
+            className="input-group mb-3 col-md-5 col-sm-8"
+          >
             <div className="input-group-prepend">
               <label className="input-group-text" htmlFor="groupName">
                 Group
@@ -30,11 +66,14 @@ function Search(props) {
                 </option>
               ))}
             </select>
-          </div>
+          </animated.div>
         </div>
 
         <div className="row justify-content-center">
-          <div className="input-group mb-3 col-md-5 col-sm-8">
+          <animated.div
+            style={propsSpringEvents}
+            className="input-group mb-3 col-md-5 col-sm-8"
+          >
             <div className="input-group-prepend">
               <label className="input-group-text" htmlFor="inputGroupSelect01">
                 Event
@@ -55,7 +94,7 @@ function Search(props) {
                 </option>
               ))}
             </select>
-          </div>
+          </animated.div>
         </div>
       </form>
     </section>
